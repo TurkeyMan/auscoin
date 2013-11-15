@@ -1,0 +1,12 @@
+{
+	"name": "auscoin",
+	"description": "AusCoin server",
+	"homepage": "http://www.auscoin.com.au/",
+	"copyright": "Copyright © 2013, Manu Evans",
+	"authors": [
+		"Manu Evans"
+	],
+	"dependencies": {
+		"vibe-d": ">=0.7.16"
+	}
+}

@@ -1,0 +1,4 @@
+auscoin
+=======
+
+Bitcoin exchange server

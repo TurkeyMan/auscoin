@@ -567,10 +567,12 @@
  <Folder name="auscoin">
   <Folder name="source">
    <File path="source\account.d" />
+   <File path="source\api.d" />
    <File path="source\app.d" />
    <File path="source\currency.d" />
    <File path="source\helper.d" />
    <File path="source\orderbook.d" />
+   <File path="source\pages.d" />
   </Folder>
   <Folder name="views">
    <Folder name="account">

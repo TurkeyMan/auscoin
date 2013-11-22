@@ -2,6 +2,7 @@ module auscoin.helper;
 
 import vibe.d;
 import std.traits;
+import auscoin.account;
 
 class AusCoinException : Exception
 {
@@ -74,4 +75,24 @@ void loadFrom(alias m, string name, A...)(A args) if(AllAreAA!A && !is(typeof(m)
 
 	if(!hasAttribute!(m, optional) && !bFound)
 		throw new AusCoinException("missing arguments");
+}
+
+
+auto createSession(HTTPServerResponse res, Account user, string password)
+{
+	string sessionKey = std.digest.digest.toHexString(std.digest.sha.sha1Of(password ~ to!string(user.lastSeen))).idup;
+
+	auto session = res.startSession();
+	session["sessionKey"] = sessionKey;
+	accountBySession[sessionKey] = user;
+
+	return session;
+}
+
+Account activeUser(HTTPServerRequest req)
+{
+	Account user = null;
+	if(req.session !is null && req.session.isKeySet("sessionKey") && req.session["sessionKey"] in accountBySession)
+		user = accountBySession[req.session["sessionKey"]];
+	return user;
 }

@@ -36,6 +36,22 @@ shared static this()
 	}
 }
 
+void accountCron(SysTime now)
+{
+	// TODO: logout inactive users...
+
+	foreach(k, acc; accountBySession)
+	{
+/+
+		if(now - acc.lastSeen > dur!"minutes"(5))
+		{
+			// logout user...
+			accountBySession[k] = null;
+		}
++/
+	}
+}
+
 class Account
 {
 	static Account create(string email, string password, string firstName, string lastName)

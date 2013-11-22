@@ -1,0 +1,15 @@
+extends layout
+
+block menu
+	#menu
+		ul.nav.nav-pills.nav-stacked
+			li.active
+				a(href="#") Account Summary
+			li
+				a(href="#") Deposit
+			li
+				a(href="#") Withdraw
+
+block content
+	h1 Hi #{user.name}
+	p Let's get into it!

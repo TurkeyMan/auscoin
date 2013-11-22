@@ -1,0 +1,30 @@
+extends account
+
+block account_content
+	h1 Add funds to your Bitcoin account
+	p Your bitcoin deposit address is: 1xxxxxxxxxxxxxxxxxxxxx
+	p [QRCODE]
+	p Your deposit address will change each time.
+
+	.row
+		form(action="/account/deposit", method="post")
+			.col-lg-4
+				.input-group
+					span.input-group-addon BTC
+					input.form-control(type="text", name="BTC", placeholder="Deposit BTC")
+					span.input-group-btn
+						button.btn.btn-default(type="submit") Deposit
+
+
+	h1 Add funds to your AUD account
+	p You can deposit money by sending to [some bank account]
+	p blah blah blah
+
+	.row
+		form(action="/account/deposit", method="post")
+			.col-lg-4
+				.input-group
+					span.input-group-addon $
+					input.form-control(type="text", name="AUD", placeholder="Deposit AUD")
+					span.input-group-btn
+						button.btn.btn-default(type="submit") Deposit

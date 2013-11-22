@@ -1,0 +1,31 @@
+extends market
+
+block market_content
+	- import auscoin.orderbook;
+	- import auscoin.currency;
+	- Market market = Market(CurrencyPair(Currency.XBT, Currency.AUD));
+
+	#exchangerate
+		h1 Exchange rate & volume
+		p [ BIG CHART HERE... ]
+
+	#trades
+		h1 Latest trades
+		table.table.table-striped
+			tr
+				td
+				td
+					strong Price
+				td
+					strong Amount
+				td
+					strong Total
+
+			- double lastTrade = 0;
+			- foreach(trade; std.range.retro(exchange.orderBook(market).filledOrders[0..min($, 40)]))
+				tr
+					td #{ trade.price > lastTrade ? "/\" : "\/" }
+					td #{ formatCurrency(Currency.AUD, trade.price) }
+					td #{ formatCurrency(Currency.XBT, trade.amount) }
+					td #{ formatCurrency(Currency.AUD, trade.price*trade.amount) }
+					- lastTrade = trade.price;

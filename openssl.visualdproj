@@ -1,5 +1,5 @@
 <DProject>
- <ProjectGuid>{D685ABD7-A915-4B18-8196-6CE1670D187D}</ProjectGuid>
+ <ProjectGuid>{0A0624CC-F8A7-46EC-A7F2-7D072A5B5D4E}</ProjectGuid>
  <Config name="debug" platform="Win32">
   <obj>0</obj>
   <link>0</link>
@@ -47,7 +47,7 @@
   <compiler>0</compiler>
   <otherDMD>0</otherDMD>
   <program>$(DMDInstallDir)windows\bin\dmd.exe</program>
-  <imppath>..\dub\packages\openssl-master</imppath>
+  <imppath>C:\Users\Manu\AppData\Roaming\dub\packages\openssl-master</imppath>
   <fileImppath />
   <outdir>.dub\lib\</outdir>
   <objdir>.dub/obj/debug/openssl</objdir>
@@ -89,7 +89,7 @@
   <resfile />
   <exefile>.dub\lib\openssl_d.lib</exefile>
   <useStdLibPath>1</useStdLibPath>
-  <additionalOptions />
+  <additionalOptions>-w -g -debug</additionalOptions>
   <preBuildCommand />
   <postBuildCommand />
   <filesToClean>*.obj;*.cmd;*.build;*.dep</filesToClean>
@@ -141,7 +141,7 @@
   <compiler>0</compiler>
   <otherDMD>0</otherDMD>
   <program>$(DMDInstallDir)windows\bin\dmd.exe</program>
-  <imppath>..\dub\packages\openssl-master</imppath>
+  <imppath>C:\Users\Manu\AppData\Roaming\dub\packages\openssl-master</imppath>
   <fileImppath />
   <outdir>.dub\lib\</outdir>
   <objdir>.dub/obj/release/openssl</objdir>
@@ -183,7 +183,7 @@
   <resfile />
   <exefile>.dub\lib\openssl.lib</exefile>
   <useStdLibPath>1</useStdLibPath>
-  <additionalOptions />
+  <additionalOptions>-w -release -O -inline</additionalOptions>
   <preBuildCommand />
   <postBuildCommand />
   <filesToClean>*.obj;*.cmd;*.build;*.dep</filesToClean>
@@ -235,7 +235,7 @@
   <compiler>0</compiler>
   <otherDMD>0</otherDMD>
   <program>$(DMDInstallDir)windows\bin\dmd.exe</program>
-  <imppath>..\dub\packages\openssl-master</imppath>
+  <imppath>C:\Users\Manu\AppData\Roaming\dub\packages\openssl-master</imppath>
   <fileImppath />
   <outdir>.dub\lib\</outdir>
   <objdir>.dub/obj/unittest/openssl</objdir>
@@ -329,7 +329,7 @@
   <compiler>0</compiler>
   <otherDMD>0</otherDMD>
   <program>$(DMDInstallDir)windows\bin\dmd.exe</program>
-  <imppath>..\dub\packages\openssl-master</imppath>
+  <imppath>C:\Users\Manu\AppData\Roaming\dub\packages\openssl-master</imppath>
   <fileImppath />
   <outdir>.dub\lib\</outdir>
   <objdir>.dub/obj/debug/openssl</objdir>
@@ -371,7 +371,7 @@
   <resfile />
   <exefile>.dub\lib\openssl_d.lib</exefile>
   <useStdLibPath>1</useStdLibPath>
-  <additionalOptions />
+  <additionalOptions>-w -g -debug</additionalOptions>
   <preBuildCommand />
   <postBuildCommand />
   <filesToClean>*.obj;*.cmd;*.build;*.dep</filesToClean>
@@ -423,7 +423,7 @@
   <compiler>0</compiler>
   <otherDMD>0</otherDMD>
   <program>$(DMDInstallDir)windows\bin\dmd.exe</program>
-  <imppath>..\dub\packages\openssl-master</imppath>
+  <imppath>C:\Users\Manu\AppData\Roaming\dub\packages\openssl-master</imppath>
   <fileImppath />
   <outdir>.dub\lib\</outdir>
   <objdir>.dub/obj/release/openssl</objdir>
@@ -465,7 +465,7 @@
   <resfile />
   <exefile>.dub\lib\openssl.lib</exefile>
   <useStdLibPath>1</useStdLibPath>
-  <additionalOptions />
+  <additionalOptions>-w -release -O -inline</additionalOptions>
   <preBuildCommand />
   <postBuildCommand />
   <filesToClean>*.obj;*.cmd;*.build;*.dep</filesToClean>
@@ -517,7 +517,7 @@
   <compiler>0</compiler>
   <otherDMD>0</otherDMD>
   <program>$(DMDInstallDir)windows\bin\dmd.exe</program>
-  <imppath>..\dub\packages\openssl-master</imppath>
+  <imppath>C:\Users\Manu\AppData\Roaming\dub\packages\openssl-master</imppath>
   <fileImppath />
   <outdir>.dub\lib\</outdir>
   <objdir>.dub/obj/unittest/openssl</objdir>
@@ -565,6 +565,6 @@
   <filesToClean>*.obj;*.cmd;*.build;*.dep</filesToClean>
  </Config>
  <Folder name="openssl">
-  <File path="..\dub\packages\openssl-master\package.json" />
+  <File path="C:\Users\Manu\AppData\Roaming\dub\packages\openssl-master\package.json" />
  </Folder>
 </DProject>

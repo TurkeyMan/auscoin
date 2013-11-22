@@ -1,5 +1,5 @@
 <DProject>
- <ProjectGuid>{5D4E9470-3D0E-47AC-8C77-F3079DD00026}</ProjectGuid>
+ <ProjectGuid>{80EE7FDC-D572-49BB-88DC-60F8967EE5F7}</ProjectGuid>
  <Config name="debug" platform="Win32">
   <obj>0</obj>
   <link>0</link>
@@ -47,7 +47,7 @@
   <compiler>0</compiler>
   <otherDMD>0</otherDMD>
   <program>$(DMDInstallDir)windows\bin\dmd.exe</program>
-  <imppath>..\dub\packages\libevent-master</imppath>
+  <imppath>C:\Users\Manu\AppData\Roaming\dub\packages\libevent-master</imppath>
   <fileImppath />
   <outdir>.dub\lib\</outdir>
   <objdir>.dub/obj/debug/libevent</objdir>
@@ -89,7 +89,7 @@
   <resfile />
   <exefile>.dub\lib\libevent_d.lib</exefile>
   <useStdLibPath>1</useStdLibPath>
-  <additionalOptions />
+  <additionalOptions>-w -g -debug</additionalOptions>
   <preBuildCommand />
   <postBuildCommand />
   <filesToClean>*.obj;*.cmd;*.build;*.dep</filesToClean>
@@ -141,7 +141,7 @@
   <compiler>0</compiler>
   <otherDMD>0</otherDMD>
   <program>$(DMDInstallDir)windows\bin\dmd.exe</program>
-  <imppath>..\dub\packages\libevent-master</imppath>
+  <imppath>C:\Users\Manu\AppData\Roaming\dub\packages\libevent-master</imppath>
   <fileImppath />
   <outdir>.dub\lib\</outdir>
   <objdir>.dub/obj/release/libevent</objdir>
@@ -183,7 +183,7 @@
   <resfile />
   <exefile>.dub\lib\libevent.lib</exefile>
   <useStdLibPath>1</useStdLibPath>
-  <additionalOptions />
+  <additionalOptions>-w -release -O -inline</additionalOptions>
   <preBuildCommand />
   <postBuildCommand />
   <filesToClean>*.obj;*.cmd;*.build;*.dep</filesToClean>
@@ -235,7 +235,7 @@
   <compiler>0</compiler>
   <otherDMD>0</otherDMD>
   <program>$(DMDInstallDir)windows\bin\dmd.exe</program>
-  <imppath>..\dub\packages\libevent-master</imppath>
+  <imppath>C:\Users\Manu\AppData\Roaming\dub\packages\libevent-master</imppath>
   <fileImppath />
   <outdir>.dub\lib\</outdir>
   <objdir>.dub/obj/unittest/libevent</objdir>
@@ -329,7 +329,7 @@
   <compiler>0</compiler>
   <otherDMD>0</otherDMD>
   <program>$(DMDInstallDir)windows\bin\dmd.exe</program>
-  <imppath>..\dub\packages\libevent-master</imppath>
+  <imppath>C:\Users\Manu\AppData\Roaming\dub\packages\libevent-master</imppath>
   <fileImppath />
   <outdir>.dub\lib\</outdir>
   <objdir>.dub/obj/debug/libevent</objdir>
@@ -371,7 +371,7 @@
   <resfile />
   <exefile>.dub\lib\libevent_d.lib</exefile>
   <useStdLibPath>1</useStdLibPath>
-  <additionalOptions />
+  <additionalOptions>-w -g -debug</additionalOptions>
   <preBuildCommand />
   <postBuildCommand />
   <filesToClean>*.obj;*.cmd;*.build;*.dep</filesToClean>
@@ -423,7 +423,7 @@
   <compiler>0</compiler>
   <otherDMD>0</otherDMD>
   <program>$(DMDInstallDir)windows\bin\dmd.exe</program>
-  <imppath>..\dub\packages\libevent-master</imppath>
+  <imppath>C:\Users\Manu\AppData\Roaming\dub\packages\libevent-master</imppath>
   <fileImppath />
   <outdir>.dub\lib\</outdir>
   <objdir>.dub/obj/release/libevent</objdir>
@@ -465,7 +465,7 @@
   <resfile />
   <exefile>.dub\lib\libevent.lib</exefile>
   <useStdLibPath>1</useStdLibPath>
-  <additionalOptions />
+  <additionalOptions>-w -release -O -inline</additionalOptions>
   <preBuildCommand />
   <postBuildCommand />
   <filesToClean>*.obj;*.cmd;*.build;*.dep</filesToClean>
@@ -517,7 +517,7 @@
   <compiler>0</compiler>
   <otherDMD>0</otherDMD>
   <program>$(DMDInstallDir)windows\bin\dmd.exe</program>
-  <imppath>..\dub\packages\libevent-master</imppath>
+  <imppath>C:\Users\Manu\AppData\Roaming\dub\packages\libevent-master</imppath>
   <fileImppath />
   <outdir>.dub\lib\</outdir>
   <objdir>.dub/obj/unittest/libevent</objdir>
@@ -565,6 +565,6 @@
   <filesToClean>*.obj;*.cmd;*.build;*.dep</filesToClean>
  </Config>
  <Folder name="libevent">
-  <File path="..\dub\packages\libevent-master\package.json" />
+  <File path="C:\Users\Manu\AppData\Roaming\dub\packages\libevent-master\package.json" />
  </Folder>
 </DProject>

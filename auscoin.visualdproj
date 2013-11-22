@@ -1,12 +1,12 @@
 <DProject>
- <ProjectGuid>{F7E4866D-B99B-4623-9FFE-F56A6B3901EC}</ProjectGuid>
+ <ProjectGuid>{9184E41E-4758-40EA-8456-452968B77320}</ProjectGuid>
  <Config name="debug" platform="Win32">
   <obj>0</obj>
   <link>0</link>
   <lib>0</lib>
   <subsystem>0</subsystem>
   <multiobj>0</multiobj>
-  <singleFileCompilation>2</singleFileCompilation>
+  <singleFileCompilation>0</singleFileCompilation>
   <oneobj>0</oneobj>
   <trace>0</trace>
   <quiet>0</quiet>
@@ -47,7 +47,7 @@
   <compiler>0</compiler>
   <otherDMD>0</otherDMD>
   <program>$(DMDInstallDir)windows\bin\dmd.exe</program>
-  <imppath>source ..\dub\packages\vibe-d-0.7.16\source ..\dub\packages\libevent-master ..\dub\packages\openssl-master</imppath>
+  <imppath>source C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source C:\Users\Manu\AppData\Roaming\dub\packages\libevent-master C:\Users\Manu\AppData\Roaming\dub\packages\openssl-master</imppath>
   <fileImppath>views</fileImppath>
   <outdir />
   <objdir>.dub/obj/debug/auscoin</objdir>
@@ -83,7 +83,7 @@
   <cv2pdbOptions />
   <objfiles />
   <linkswitches />
-  <libfiles>wsock32.lib ws2_32.lib D:\WinDev\dub\packages\vibe-d-0.7.16\lib\win-i386\eay.lib D:\WinDev\dub\packages\vibe-d-0.7.16\lib\win-i386\ssl.lib D:\WinDev\dub\packages\vibe-d-0.7.16\lib\win-i386\event2.lib phobos.lib</libfiles>
+  <libfiles>wsock32.lib ws2_32.lib advapi32.lib C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\lib\win-i386\eay.lib C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\lib\win-i386\ssl.lib C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\lib\win-i386\event2.lib phobos.lib</libfiles>
   <libpaths />
   <deffile />
   <resfile />
@@ -141,7 +141,7 @@
   <compiler>0</compiler>
   <otherDMD>0</otherDMD>
   <program>$(DMDInstallDir)windows\bin\dmd.exe</program>
-  <imppath>source ..\dub\packages\vibe-d-0.7.16\source ..\dub\packages\libevent-master ..\dub\packages\openssl-master</imppath>
+  <imppath>source C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source C:\Users\Manu\AppData\Roaming\dub\packages\libevent-master C:\Users\Manu\AppData\Roaming\dub\packages\openssl-master</imppath>
   <fileImppath>views</fileImppath>
   <outdir />
   <objdir>.dub/obj/release/auscoin</objdir>
@@ -177,7 +177,7 @@
   <cv2pdbOptions />
   <objfiles />
   <linkswitches />
-  <libfiles>wsock32.lib ws2_32.lib D:\WinDev\dub\packages\vibe-d-0.7.16\lib\win-i386\eay.lib D:\WinDev\dub\packages\vibe-d-0.7.16\lib\win-i386\ssl.lib D:\WinDev\dub\packages\vibe-d-0.7.16\lib\win-i386\event2.lib phobos.lib</libfiles>
+  <libfiles>wsock32.lib ws2_32.lib advapi32.lib C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\lib\win-i386\eay.lib C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\lib\win-i386\ssl.lib C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\lib\win-i386\event2.lib phobos.lib</libfiles>
   <libpaths />
   <deffile />
   <resfile />
@@ -235,7 +235,7 @@
   <compiler>0</compiler>
   <otherDMD>0</otherDMD>
   <program>$(DMDInstallDir)windows\bin\dmd.exe</program>
-  <imppath>source ..\dub\packages\vibe-d-0.7.16\source ..\dub\packages\libevent-master ..\dub\packages\openssl-master</imppath>
+  <imppath>source C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source C:\Users\Manu\AppData\Roaming\dub\packages\libevent-master C:\Users\Manu\AppData\Roaming\dub\packages\openssl-master</imppath>
   <fileImppath>views</fileImppath>
   <outdir />
   <objdir>.dub/obj/unittest/auscoin</objdir>
@@ -271,7 +271,7 @@
   <cv2pdbOptions />
   <objfiles />
   <linkswitches />
-  <libfiles>wsock32.lib ws2_32.lib D:\WinDev\dub\packages\vibe-d-0.7.16\lib\win-i386\eay.lib D:\WinDev\dub\packages\vibe-d-0.7.16\lib\win-i386\ssl.lib D:\WinDev\dub\packages\vibe-d-0.7.16\lib\win-i386\event2.lib phobos.lib</libfiles>
+  <libfiles>wsock32.lib ws2_32.lib advapi32.lib C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\lib\win-i386\eay.lib C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\lib\win-i386\ssl.lib C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\lib\win-i386\event2.lib phobos.lib</libfiles>
   <libpaths />
   <deffile />
   <resfile />
@@ -294,7 +294,7 @@
   <quiet>0</quiet>
   <verbose>0</verbose>
   <vtls>0</vtls>
-  <symdebug>1</symdebug>
+  <symdebug>0</symdebug>
   <optimize>0</optimize>
   <cpu>0</cpu>
   <isX86_64>1</isX86_64>
@@ -329,7 +329,7 @@
   <compiler>0</compiler>
   <otherDMD>0</otherDMD>
   <program>$(DMDInstallDir)windows\bin\dmd.exe</program>
-  <imppath>source ..\dub\packages\vibe-d-0.7.16\source ..\dub\packages\libevent-master ..\dub\packages\openssl-master</imppath>
+  <imppath>source C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source C:\Users\Manu\AppData\Roaming\dub\packages\libevent-master C:\Users\Manu\AppData\Roaming\dub\packages\openssl-master</imppath>
   <fileImppath>views</fileImppath>
   <outdir />
   <objdir>.dub/obj/debug/auscoin</objdir>
@@ -365,7 +365,7 @@
   <cv2pdbOptions />
   <objfiles />
   <linkswitches />
-  <libfiles>wsock32.lib ws2_32.lib D:\WinDev\dub\packages\vibe-d-0.7.16\lib\win-i386\eay.lib D:\WinDev\dub\packages\vibe-d-0.7.16\lib\win-i386\ssl.lib D:\WinDev\dub\packages\vibe-d-0.7.16\lib\win-i386\event2.lib phobos.lib</libfiles>
+  <libfiles>wsock32.lib ws2_32.lib advapi32.lib C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\lib\win-i386\eay.lib C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\lib\win-i386\ssl.lib C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\lib\win-i386\event2.lib phobos.lib</libfiles>
   <libpaths />
   <deffile />
   <resfile />
@@ -423,7 +423,7 @@
   <compiler>0</compiler>
   <otherDMD>0</otherDMD>
   <program>$(DMDInstallDir)windows\bin\dmd.exe</program>
-  <imppath>source ..\dub\packages\vibe-d-0.7.16\source ..\dub\packages\libevent-master ..\dub\packages\openssl-master</imppath>
+  <imppath>source C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source C:\Users\Manu\AppData\Roaming\dub\packages\libevent-master C:\Users\Manu\AppData\Roaming\dub\packages\openssl-master</imppath>
   <fileImppath>views</fileImppath>
   <outdir />
   <objdir>.dub/obj/release/auscoin</objdir>
@@ -459,7 +459,7 @@
   <cv2pdbOptions />
   <objfiles />
   <linkswitches />
-  <libfiles>wsock32.lib ws2_32.lib D:\WinDev\dub\packages\vibe-d-0.7.16\lib\win-i386\eay.lib D:\WinDev\dub\packages\vibe-d-0.7.16\lib\win-i386\ssl.lib D:\WinDev\dub\packages\vibe-d-0.7.16\lib\win-i386\event2.lib phobos.lib</libfiles>
+  <libfiles>wsock32.lib ws2_32.lib advapi32.lib C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\lib\win-i386\eay.lib C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\lib\win-i386\ssl.lib C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\lib\win-i386\event2.lib phobos.lib</libfiles>
   <libpaths />
   <deffile />
   <resfile />
@@ -517,7 +517,7 @@
   <compiler>0</compiler>
   <otherDMD>0</otherDMD>
   <program>$(DMDInstallDir)windows\bin\dmd.exe</program>
-  <imppath>source ..\dub\packages\vibe-d-0.7.16\source ..\dub\packages\libevent-master ..\dub\packages\openssl-master</imppath>
+  <imppath>source C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source C:\Users\Manu\AppData\Roaming\dub\packages\libevent-master C:\Users\Manu\AppData\Roaming\dub\packages\openssl-master</imppath>
   <fileImppath>views</fileImppath>
   <outdir />
   <objdir>.dub/obj/unittest/auscoin</objdir>
@@ -553,7 +553,7 @@
   <cv2pdbOptions />
   <objfiles />
   <linkswitches />
-  <libfiles>wsock32.lib ws2_32.lib D:\WinDev\dub\packages\vibe-d-0.7.16\lib\win-i386\eay.lib D:\WinDev\dub\packages\vibe-d-0.7.16\lib\win-i386\ssl.lib D:\WinDev\dub\packages\vibe-d-0.7.16\lib\win-i386\event2.lib phobos.lib</libfiles>
+  <libfiles>wsock32.lib ws2_32.lib advapi32.lib C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\lib\win-i386\eay.lib C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\lib\win-i386\ssl.lib C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\lib\win-i386\event2.lib phobos.lib</libfiles>
   <libpaths />
   <deffile />
   <resfile />
@@ -571,6 +571,48 @@
    <File path="source\currency.d" />
    <File path="source\helper.d" />
    <File path="source\orderbook.d" />
+  </Folder>
+  <Folder name="views">
+   <Folder name="account">
+    <File path="views\account.dt" />
+    <File path="views\deposit.dt" />
+    <File path="views\summary.dt" />
+    <File path="views\withdraw.dt" />
+   </Folder>
+   <Folder name="market">
+    <File path="views\market.dt" />
+    <File path="views\orders.dt" />
+    <File path="views\trades.dt" />
+   </Folder>
+   <Folder name="trade">
+    <File path="views\trade.dt" />
+   </Folder>
+   <File path="views\error.dt" />
+   <File path="views\index.dt" />
+   <File path="views\layout.dt" />
+   <File path="views\login.dt" />
+   <File path="views\profile.dt" />
+   <File path="views\register.dt" />
+  </Folder>
+  <Folder name="www">
+   <Folder name="css">
+    <File path="www\css\bootstrap-theme.css" />
+    <File path="www\css\bootstrap-theme.min.css" />
+    <File path="www\css\bootstrap.css" />
+    <File path="www\css\bootstrap.min.css" />
+    <File path="www\css\style.css" />
+   </Folder>
+   <Folder name="fonts">
+    <File path="www\fonts\glyphicons-halflings-regular.eot" />
+    <File path="www\fonts\glyphicons-halflings-regular.svg" />
+    <File path="www\fonts\glyphicons-halflings-regular.ttf" />
+    <File path="www\fonts\glyphicons-halflings-regular.woff" />
+   </Folder>
+   <Folder name="js">
+    <File path="www\js\bootstrap.js" />
+    <File path="www\js\bootstrap.min.js" />
+    <File path="www\js\trade.js" />
+   </Folder>
   </Folder>
   <File path="package.json" />
  </Folder>

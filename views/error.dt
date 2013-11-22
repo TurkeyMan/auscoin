@@ -1,0 +1,7 @@
+extends layout
+
+block content
+	h1 Uh oh! Something went wrong!
+	p Code: #{error.code} - #{error.message}
+	- debug
+		p #{error.debugMessage}

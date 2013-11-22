@@ -1,0 +1,14 @@
+extends layout
+
+block content
+	#menu
+		ul.nav.nav-pills.nav-stacked
+			li(class = req.path.startsWith("/account/summary") ? "active" : "")
+				a(href="/account/summary") Account Summary
+			li(class = req.path.startsWith("/account/deposit") ? "active" : "")
+				a(href="/account/deposit") Deposit
+			li(class = req.path.startsWith("/account/withdraw") ? "active" : "")
+				a(href="/account/withdraw") Withdraw
+
+	#account-content
+		block account_content

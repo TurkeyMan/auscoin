@@ -1,5 +1,5 @@
 <DProject>
- <ProjectGuid>{36BD26D4-EDEB-4D59-B48B-6368B4B0184E}</ProjectGuid>
+ <ProjectGuid>{E5B2E7C2-C421-40A5-91F8-97DCC5656540}</ProjectGuid>
  <Config name="debug" platform="Win32">
   <obj>0</obj>
   <link>0</link>
@@ -47,7 +47,7 @@
   <compiler>0</compiler>
   <otherDMD>0</otherDMD>
   <program>$(DMDInstallDir)windows\bin\dmd.exe</program>
-  <imppath>..\dub\packages\vibe-d-0.7.16\source ..\dub\packages\libevent-master ..\dub\packages\openssl-master</imppath>
+  <imppath>C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source C:\Users\Manu\AppData\Roaming\dub\packages\libevent-master C:\Users\Manu\AppData\Roaming\dub\packages\openssl-master</imppath>
   <fileImppath />
   <outdir>.dub\lib\</outdir>
   <objdir>.dub/obj/debug/vibe-d</objdir>
@@ -83,7 +83,7 @@
   <cv2pdbOptions />
   <objfiles />
   <linkswitches />
-  <libfiles>wsock32.lib ws2_32.lib D:\WinDev\dub\packages\vibe-d-0.7.16\lib\win-i386\eay.lib D:\WinDev\dub\packages\vibe-d-0.7.16\lib\win-i386\ssl.lib D:\WinDev\dub\packages\vibe-d-0.7.16\lib\win-i386\event2.lib phobos.lib</libfiles>
+  <libfiles>wsock32.lib ws2_32.lib advapi32.lib C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\lib\win-i386\eay.lib C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\lib\win-i386\ssl.lib C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\lib\win-i386\event2.lib phobos.lib</libfiles>
   <libpaths />
   <deffile />
   <resfile />
@@ -141,7 +141,7 @@
   <compiler>0</compiler>
   <otherDMD>0</otherDMD>
   <program>$(DMDInstallDir)windows\bin\dmd.exe</program>
-  <imppath>..\dub\packages\vibe-d-0.7.16\source ..\dub\packages\libevent-master ..\dub\packages\openssl-master</imppath>
+  <imppath>C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source C:\Users\Manu\AppData\Roaming\dub\packages\libevent-master C:\Users\Manu\AppData\Roaming\dub\packages\openssl-master</imppath>
   <fileImppath />
   <outdir>.dub\lib\</outdir>
   <objdir>.dub/obj/release/vibe-d</objdir>
@@ -177,7 +177,7 @@
   <cv2pdbOptions />
   <objfiles />
   <linkswitches />
-  <libfiles>wsock32.lib ws2_32.lib D:\WinDev\dub\packages\vibe-d-0.7.16\lib\win-i386\eay.lib D:\WinDev\dub\packages\vibe-d-0.7.16\lib\win-i386\ssl.lib D:\WinDev\dub\packages\vibe-d-0.7.16\lib\win-i386\event2.lib phobos.lib</libfiles>
+  <libfiles>wsock32.lib ws2_32.lib advapi32.lib C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\lib\win-i386\eay.lib C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\lib\win-i386\ssl.lib C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\lib\win-i386\event2.lib phobos.lib</libfiles>
   <libpaths />
   <deffile />
   <resfile />
@@ -235,7 +235,7 @@
   <compiler>0</compiler>
   <otherDMD>0</otherDMD>
   <program>$(DMDInstallDir)windows\bin\dmd.exe</program>
-  <imppath>..\dub\packages\vibe-d-0.7.16\source ..\dub\packages\libevent-master ..\dub\packages\openssl-master</imppath>
+  <imppath>C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source C:\Users\Manu\AppData\Roaming\dub\packages\libevent-master C:\Users\Manu\AppData\Roaming\dub\packages\openssl-master</imppath>
   <fileImppath />
   <outdir>.dub\lib\</outdir>
   <objdir>.dub/obj/unittest/vibe-d</objdir>
@@ -271,7 +271,7 @@
   <cv2pdbOptions />
   <objfiles />
   <linkswitches />
-  <libfiles>wsock32.lib ws2_32.lib D:\WinDev\dub\packages\vibe-d-0.7.16\lib\win-i386\eay.lib D:\WinDev\dub\packages\vibe-d-0.7.16\lib\win-i386\ssl.lib D:\WinDev\dub\packages\vibe-d-0.7.16\lib\win-i386\event2.lib phobos.lib</libfiles>
+  <libfiles>wsock32.lib ws2_32.lib advapi32.lib C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\lib\win-i386\eay.lib C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\lib\win-i386\ssl.lib C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\lib\win-i386\event2.lib phobos.lib</libfiles>
   <libpaths />
   <deffile />
   <resfile />
@@ -329,7 +329,7 @@
   <compiler>0</compiler>
   <otherDMD>0</otherDMD>
   <program>$(DMDInstallDir)windows\bin\dmd.exe</program>
-  <imppath>..\dub\packages\vibe-d-0.7.16\source ..\dub\packages\libevent-master ..\dub\packages\openssl-master</imppath>
+  <imppath>C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source C:\Users\Manu\AppData\Roaming\dub\packages\libevent-master C:\Users\Manu\AppData\Roaming\dub\packages\openssl-master</imppath>
   <fileImppath />
   <outdir>.dub\lib\</outdir>
   <objdir>.dub/obj/debug/vibe-d</objdir>
@@ -365,7 +365,7 @@
   <cv2pdbOptions />
   <objfiles />
   <linkswitches />
-  <libfiles>wsock32.lib ws2_32.lib D:\WinDev\dub\packages\vibe-d-0.7.16\lib\win-i386\eay.lib D:\WinDev\dub\packages\vibe-d-0.7.16\lib\win-i386\ssl.lib D:\WinDev\dub\packages\vibe-d-0.7.16\lib\win-i386\event2.lib phobos.lib</libfiles>
+  <libfiles>wsock32.lib ws2_32.lib advapi32.lib C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\lib\win-i386\eay.lib C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\lib\win-i386\ssl.lib C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\lib\win-i386\event2.lib phobos.lib</libfiles>
   <libpaths />
   <deffile />
   <resfile />
@@ -423,7 +423,7 @@
   <compiler>0</compiler>
   <otherDMD>0</otherDMD>
   <program>$(DMDInstallDir)windows\bin\dmd.exe</program>
-  <imppath>..\dub\packages\vibe-d-0.7.16\source ..\dub\packages\libevent-master ..\dub\packages\openssl-master</imppath>
+  <imppath>C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source C:\Users\Manu\AppData\Roaming\dub\packages\libevent-master C:\Users\Manu\AppData\Roaming\dub\packages\openssl-master</imppath>
   <fileImppath />
   <outdir>.dub\lib\</outdir>
   <objdir>.dub/obj/release/vibe-d</objdir>
@@ -459,7 +459,7 @@
   <cv2pdbOptions />
   <objfiles />
   <linkswitches />
-  <libfiles>wsock32.lib ws2_32.lib D:\WinDev\dub\packages\vibe-d-0.7.16\lib\win-i386\eay.lib D:\WinDev\dub\packages\vibe-d-0.7.16\lib\win-i386\ssl.lib D:\WinDev\dub\packages\vibe-d-0.7.16\lib\win-i386\event2.lib phobos.lib</libfiles>
+  <libfiles>wsock32.lib ws2_32.lib advapi32.lib C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\lib\win-i386\eay.lib C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\lib\win-i386\ssl.lib C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\lib\win-i386\event2.lib phobos.lib</libfiles>
   <libpaths />
   <deffile />
   <resfile />
@@ -517,7 +517,7 @@
   <compiler>0</compiler>
   <otherDMD>0</otherDMD>
   <program>$(DMDInstallDir)windows\bin\dmd.exe</program>
-  <imppath>..\dub\packages\vibe-d-0.7.16\source ..\dub\packages\libevent-master ..\dub\packages\openssl-master</imppath>
+  <imppath>C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source C:\Users\Manu\AppData\Roaming\dub\packages\libevent-master C:\Users\Manu\AppData\Roaming\dub\packages\openssl-master</imppath>
   <fileImppath />
   <outdir>.dub\lib\</outdir>
   <objdir>.dub/obj/unittest/vibe-d</objdir>
@@ -553,7 +553,7 @@
   <cv2pdbOptions />
   <objfiles />
   <linkswitches />
-  <libfiles>wsock32.lib ws2_32.lib D:\WinDev\dub\packages\vibe-d-0.7.16\lib\win-i386\eay.lib D:\WinDev\dub\packages\vibe-d-0.7.16\lib\win-i386\ssl.lib D:\WinDev\dub\packages\vibe-d-0.7.16\lib\win-i386\event2.lib phobos.lib</libfiles>
+  <libfiles>wsock32.lib ws2_32.lib advapi32.lib C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\lib\win-i386\eay.lib C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\lib\win-i386\ssl.lib C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\lib\win-i386\event2.lib phobos.lib</libfiles>
   <libpaths />
   <deffile />
   <resfile />
@@ -567,121 +567,132 @@
  <Folder name="vibe-d">
   <Folder name="lib">
    <Folder name="win-i386">
-    <File path="..\dub\packages\vibe-d-0.7.16\lib\win-i386\eay.lib" />
-    <File path="..\dub\packages\vibe-d-0.7.16\lib\win-i386\event2.lib" />
-    <File path="..\dub\packages\vibe-d-0.7.16\lib\win-i386\ssl.lib" />
+    <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\lib\win-i386\eay.lib" />
+    <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\lib\win-i386\event2.lib" />
+    <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\lib\win-i386\ssl.lib" />
    </Folder>
   </Folder>
   <Folder name="source">
    <Folder name="vibe">
     <Folder name="core">
      <Folder name="drivers">
-      <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\core\drivers\libev.d" />
-      <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\core\drivers\libevent2.d" />
-      <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\core\drivers\libevent2_tcp.d" />
-      <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\core\drivers\threadedfile.d" />
-      <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\core\drivers\win32.d" />
-      <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\core\drivers\winrt.d" />
+      <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\core\drivers\libev.d" />
+      <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\core\drivers\libevent2.d" />
+      <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\core\drivers\libevent2_tcp.d" />
+      <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\core\drivers\threadedfile.d" />
+      <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\core\drivers\win32.d" />
+      <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\core\drivers\winrt.d" />
      </Folder>
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\core\args.d" />
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\core\concurrency.d" />
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\core\connectionpool.d" />
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\core\core.d" />
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\core\driver.d" />
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\core\file.d" />
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\core\log.d" />
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\core\net.d" />
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\core\stream.d" />
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\core\sync.d" />
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\core\task.d" />
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\core\_eventedobject.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\core\args.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\core\concurrency.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\core\connectionpool.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\core\core.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\core\driver.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\core\file.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\core\log.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\core\net.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\core\stream.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\core\sync.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\core\task.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\core\_eventedobject.d" />
     </Folder>
     <Folder name="crypto">
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\crypto\passwordhash.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\crypto\cryptorand.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\crypto\passwordhash.d" />
     </Folder>
     <Folder name="data">
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\data\bson.d" />
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\data\json.d" />
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\data\utils.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\data\bson.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\data\json.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\data\serialization.d" />
     </Folder>
     <Folder name="db">
      <Folder name="mongo">
-      <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\db\mongo\client.d" />
-      <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\db\mongo\collection.d" />
-      <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\db\mongo\connection.d" />
-      <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\db\mongo\cursor.d" />
-      <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\db\mongo\database.d" />
-      <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\db\mongo\mongo.d" />
+      <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\db\mongo\client.d" />
+      <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\db\mongo\collection.d" />
+      <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\db\mongo\connection.d" />
+      <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\db\mongo\cursor.d" />
+      <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\db\mongo\database.d" />
+      <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\db\mongo\mongo.d" />
      </Folder>
      <Folder name="redis">
-      <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\db\redis\redis.d" />
+      <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\db\redis\redis.d" />
      </Folder>
     </Folder>
     <Folder name="http">
      <Folder name="auth">
-      <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\http\auth\basic_auth.d" />
+      <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\http\auth\basic_auth.d" />
      </Folder>
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\http\client.d" />
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\http\common.d" />
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\http\dist.d" />
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\http\fileserver.d" />
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\http\form.d" />
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\http\log.d" />
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\http\proxy.d" />
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\http\rest.d" />
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\http\restutil.d" />
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\http\router.d" />
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\http\server.d" />
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\http\session.d" />
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\http\status.d" />
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\http\websockets.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\http\client.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\http\common.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\http\dist.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\http\fileserver.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\http\form.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\http\log.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\http\proxy.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\http\rest.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\http\router.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\http\server.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\http\session.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\http\status.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\http\websockets.d" />
     </Folder>
     <Folder name="inet">
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\inet\message.d" />
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\inet\mimetypes.d" />
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\inet\path.d" />
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\inet\url.d" />
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\inet\urltransfer.d" />
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\inet\webform.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\inet\message.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\inet\mimetypes.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\inet\path.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\inet\url.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\inet\urltransfer.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\inet\webform.d" />
     </Folder>
     <Folder name="internal">
-     <Folder name="std">
-      <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\internal\std\process.d" />
+     <Folder name="meta">
+      <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\internal\meta\all.d" />
+      <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\internal\meta\codegen.d" />
+      <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\internal\meta\funcattr.d" />
+      <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\internal\meta\traits.d" />
+      <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\internal\meta\typetuple.d" />
+      <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\internal\meta\uda.d" />
      </Folder>
+     <Folder name="std">
+      <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\internal\std\process.d" />
+     </Folder>
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\internal\win32.d" />
     </Folder>
     <Folder name="mail">
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\mail\smtp.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\mail\smtp.d" />
     </Folder>
     <Folder name="stream">
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\stream\base64.d" />
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\stream\counting.d" />
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\stream\memory.d" />
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\stream\operations.d" />
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\stream\ssl.d" />
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\stream\zlib.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\stream\base64.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\stream\counting.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\stream\memory.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\stream\operations.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\stream\ssl.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\stream\taskpipe.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\stream\wrapper.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\stream\zlib.d" />
     </Folder>
     <Folder name="templ">
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\templ\diet.d" />
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\templ\parsertools.d" />
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\templ\utils.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\templ\diet.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\templ\parsertools.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\templ\utils.d" />
     </Folder>
     <Folder name="textfilter">
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\textfilter\html.d" />
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\textfilter\markdown.d" />
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\textfilter\urlencode.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\textfilter\html.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\textfilter\markdown.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\textfilter\urlencode.d" />
     </Folder>
     <Folder name="utils">
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\utils\array.d" />
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\utils\hashmap.d" />
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\utils\memory.d" />
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\utils\string.d" />
-     <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\utils\validation.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\utils\array.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\utils\hashmap.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\utils\memory.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\utils\string.d" />
+     <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\utils\validation.d" />
     </Folder>
-    <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\appmain.d" />
-    <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\d.d" />
-    <File path="..\dub\packages\vibe-d-0.7.16\source\vibe\vibe.d" />
+    <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\appmain.d" />
+    <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\d.d" />
+    <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\source\vibe\vibe.d" />
    </Folder>
   </Folder>
-  <File path="..\dub\packages\vibe-d-0.7.16\package.json" />
+  <File path="C:\Users\Manu\AppData\Roaming\dub\packages\vibe-d-0.7.18-beta.2\package.json" />
  </Folder>
 </DProject>

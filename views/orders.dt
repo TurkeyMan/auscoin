@@ -1,0 +1,54 @@
+extends market
+
+block market_content
+	- import auscoin.orderbook;
+	- import auscoin.currency;
+	- Market market = Market(CurrencyPair(Currency.XBT, Currency.AUD));
+
+	table(width="100%")
+		tr
+			td(colspan="2")
+				#marketdepth
+					h1 Market Depth Chart
+					p [ BIG CHART HERE... ]
+
+		tr
+			td(valign="top")
+				#buyorders
+					h1 Buy Orders
+					table.table.table-striped
+						tr
+							td
+								strong Price
+							td
+								strong Amount
+							td
+								strong Cumulative
+
+						- double buyTotal = 0;
+						- foreach(order; exchange.orderBook(market).buyOrders[0..min($, 40)])
+							- buyTotal += order.amount;
+							tr
+								td #{ formatCurrency(Currency.AUD, order.price) }
+								td #{ formatCurrency(Currency.XBT, order.amount) }
+								td #{ formatCurrency(Currency.XBT, buyTotal) }
+
+			td(valign="top")
+				#sellorders
+					h1 Sell Orders
+					table.table.table-striped
+						tr
+							td
+								strong Price
+							td
+								strong Amount
+							td
+								strong Cumulative
+
+						- double sellTotal = 0;
+						- foreach(order; exchange.orderBook(market).sellOrders[0..min($, 40)])
+							- sellTotal += order.amount;
+							tr
+								td #{ formatCurrency(Currency.AUD, order.price) }
+								td #{ formatCurrency(Currency.XBT, order.amount) }
+								td #{ formatCurrency(Currency.XBT, sellTotal) }

@@ -1,0 +1,36 @@
+extends account
+
+block account_content
+	#balances
+		h1 Balances
+		table.table.table-striped
+			tr
+				td
+					strong Currency
+				td
+					strong Balance
+
+			- import auscoin.currency;
+			- foreach(c; currencies)
+				tr
+					td #{c.name}
+					td #{formatCurrency(c.id, user.accounts(c.id))}
+
+	h1 Activity
+	table.table.table-striped
+		tr
+			td
+				strong Type
+			td
+				strong Date
+			td
+				strong Debit
+			td
+				strong Credit
+
+		- foreach(action; std.range.retro(user.activity))
+			tr
+				td #{to!string(action.action)}
+				td #{to!string(action.timestamp)}
+				td #{action.debitCurrency != Currency.Unknown ? formatCurrency(action.debitCurrency, action.debit) : ""}
+				td #{action.creditCurrency != Currency.Unknown ? formatCurrency(action.creditCurrency, action.credit) : ""}

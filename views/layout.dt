@@ -1,0 +1,56 @@
+- void css(string file)
+	link(rel='stylesheet', type='text/css', href='/css/#{file}.css')
+
+!!! 5
+html
+	head
+		title AusCoin
+		- css("style");
+		- css("bootstrap");
+		- css("bootstrap-theme");
+		block header
+	body
+		#container
+			#header
+				#logo
+					a(href="/")
+						img(src="/img/logo.png")
+				.container
+					#navarea
+						- if(user)
+							#navi-left
+								ul.nav.nav-tabs
+									li(class = req.path.startsWith("/account") ? "active" : "")
+										a(href="/account") Account
+									li(class = req.path.startsWith("/trade") ? "active" : "")
+										a(href="/trade") Trade
+									li(class = req.path.startsWith("/market") ? "active" : "")
+										a(href="/market") Market
+							#navi-right
+								ul.nav.nav-pills
+									li
+										a(href="/profile") #{user.name}
+									li
+										a(href="/logout") Log Off
+						- else
+							#navi-right
+								- if(req.path != "/login")
+									form#quick-login.form-inline(action="/login", method="post")
+										.form-group
+											input#email.form-control(type="email", name="email", placeholder="Email")
+										.form-group
+											input#password.form-control(type="password", name="password", placeholder="Password")
+										button.btn.btn-default(type="submit") Log In
+								- if(req.path != "/register")
+									ul#register.nav.nav-pills
+										li
+											a(href="/register") Sign Up
+
+			#body
+				.container
+					#content
+						block content
+
+			#footer
+				.container
+					p Copyright info, blah blah

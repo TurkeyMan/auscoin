@@ -1,0 +1,117 @@
+extends layout
+
+block header
+	- import auscoin.currency;
+	- vibe.data.json.Json currency_js = vibe.data.json.serializeToJson(currencies);
+
+	script(type="text/javascript")
+		var currencies = !{ currency_js.toString() };
+		var lowestSell = 0;
+		var highestBuy = 0;
+	script(src="/js/trade.js")
+
+block content
+	- import auscoin.currency;
+
+	table(width="100%")
+		tr
+			td
+				#buyorder.panel.panel-default
+					.panel-body
+						form#buyform.form-horizontal(action="/trade", method="post")
+							.form-group
+								.col-sm-offset-3.col-sm-8
+									h1 Buy Bitcoins
+							.form-group
+								label.col-sm-3.control-label(for="buyamount") Amount
+								.col-sm-8
+									.input-group
+										input#buyamount.form-control(type="text", name="buyamount", placeholder="Amount")
+										span.input-group-addon BTC
+							.form-group
+								label.col-sm-3.control-label(for="buyprice") Price
+								.col-sm-8
+									.input-group
+										span.input-group-addon $
+										input#buyprice.form-control(type="text", name="buyprice", placeholder="Price per unit")
+							.form-group
+								label.col-sm-3.control-label(for="buytotal") Total
+								.col-sm-8
+									.input-group
+										span.input-group-addon $
+										input#buytotal.form-control(type="text", name="buytotal", disabled="disabled")
+							.form-group
+								.col-sm-offset-3.col-sm-8 #{formatCurrency(Currency.AUD, user.AUD)} available
+							.form-group
+								.col-sm-offset-3.col-sm-8
+									button.btn.btn-default(type="submit") Buy
+
+			td
+				#sellorder.panel.panel-default
+					.panel-body
+						form#sellform.form-horizontal(action="/trade", method="post")
+							.form-group
+								.col-sm-offset-3.col-sm-8
+									h1 Sell Bitcoins
+							.form-group
+								label.col-sm-3.control-label(for="sellamount") Amount
+								.col-sm-8
+									.input-group
+										input#sellamount.form-control(type="text", name="sellamount", placeholder="Amount")
+										span.input-group-addon BTC
+							.form-group
+								.col-sm-offset-3.col-sm-8 #{formatCurrency(Currency.XBT, user.XBT)} available
+							.form-group
+								label.col-sm-3.control-label(for="sellprice") Price
+								.col-sm-8
+									.input-group
+										span.input-group-addon $
+										input#sellprice.form-control(type="text", name="sellprice", placeholder="Price per unit")
+							.form-group
+								label.col-sm-3.control-label(for="selltotal") Total
+								.col-sm-8
+									.input-group
+										span.input-group-addon $
+										input#selltotal.form-control(type="text", name="selltotal", disabled="disabled")
+							.form-group
+								.col-sm-offset-3.col-sm-8
+									button.btn.btn-default(type="submit") Sell
+
+		tr
+			td(colspan="2")
+				#myorders
+					h1 Open Orders
+					table.table.table-striped
+						tr
+							td
+								strong Type
+							td
+								strong Date
+							td
+								strong Price
+							td
+								strong Amount
+							td
+								strong Remaining
+							td
+
+						- foreach(action; user.activity)
+							tr
+
+					h1 Closed Orders
+					table.table.table-striped
+						tr
+							td
+								strong Type
+							td
+								strong Date
+							td
+								strong Price
+							td
+								strong Amount
+							td
+								strong Remaining
+							td
+
+						- foreach(action; user.activity)
+							tr

@@ -1,0 +1,5 @@
+extends account
+
+block account_content
+	h1 Hi #{user.name}
+	p Let's get into it!

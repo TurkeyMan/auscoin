@@ -6,6 +6,31 @@ import auscoin.account;
 import std.datetime;
 import std.algorithm;
 
+import vibe.data.json;
+
+void saveExchangeDb()
+{
+//	Json js = serializeToJson(exchange);
+//	std.file.write("exchange.json", js.toString());
+}
+
+shared static this()
+{
+	try
+	{
+		auto bytes = cast(string)std.file.read("exchange.json");
+		if(bytes)
+		{
+//			Json js = parseJsonString(bytes);
+//			deserializeJson(exchange, js);
+		}
+	}
+	catch
+	{
+		exchange = new Exchange();
+	}
+}
+
 
 enum OrderType
 {
@@ -23,11 +48,16 @@ struct Market
 
 		bool bReverse = currency[0] > currency[1];
 		if(bReverse)
-			std.typecons.swap(currency[0], currency[1]);
+		{
+//			std.typecons.swap(currency[0], currency[1]);
+			auto t = currency[0];
+			currency[0] = currency[1];
+			currency[1] = t;
+		}
 
-		market = (buy*Currency.max + sell - 1) | (bReverse ? 0x8000_0000 : 0);
+		market = (currency[0]*Currency.max + currency[1] - 1) | (bReverse ? 0x8000_0000 : 0);
 
-		assert(market < Currency.NumMarkets);
+		assert(market < NumMarkets);
 	}
 
 	this(Currency buy, Currency sell)
@@ -42,8 +72,8 @@ struct Market
 
 	@property CurrencyPair currency() const pure nothrow
 	{
-		int buy = market / Currency.max;
-		int sell = market % Currency.max + 1;
+		Currency buy = cast(Currency)(market / Currency.max);
+		Currency sell = cast(Currency)(market % Currency.max + 1);
 		if(reverse)
 			return CurrencyPair(sell, buy);
 		return CurrencyPair(buy, sell);
@@ -56,40 +86,40 @@ struct Market
 struct Order
 {
 	SysTime time;
-	Account accountId;
+	uint account;
 
 	OrderType type;
 	double amount;
-	double perUnit;
+	double price;
 
 	this(Account account, OrderType type, double amount, double perUnit)
 	{
 		this.time = Clock.currTime;
-		this.accountId = account;
+		this.account = account.accountId;
 		this.type = type;
 		this.amount = amount;
-		this.perUnit = perUnit;
+		this.price = perUnit;
 	}
 }
 
 struct Transaction
 {
 	SysTime time;
-	Account buyerId;
-	Account sellerId;
+	uint buyer;
+	uint seller;
 
 	OrderType type;
 
 	double amount;
-	double perUnit;
+	double price;
 
 	this(Account buyer, Account seller, OrderType type, double amount, double perUnit)
 	{
 		this.time = Clock.currTime;
-		this.buyer = buyer;
-		this.seller = seller;
+		this.buyer = buyer.accountId;
+		this.seller = seller.accountId;
 		this.amount = amount;
-		this.perUnit = perUnit;
+		this.price = perUnit;
 	}
 }
 
@@ -106,9 +136,9 @@ class Exchange
 	bool placeOrder(Account account, Market market, OrderType type, double amount, double perUnit)
 	{
 		if(type == OrderType.buy)
-			return placeBuyOrder(account, market, amount, perUnit);
+			return placeBuyOrder(account, market, amount, perUnit, false);
 		else
-			return placeSellOrder(account, market, amount, perUnit);
+			return placeSellOrder(account, market, amount, perUnit, false);
 	}
 
 	bool placeBuyOrder(Account account, Market market, double amount, double perUnit, bool bMarketPrice)
@@ -121,16 +151,16 @@ class Exchange
 		Order[] sellOrders = markets[market].sellOrders;
 
 		// if this offer fills any orders
-		for(size_t i = 0; i < sellOrders.length && order.perUnit >= sellOrders[i].perUnit; )
+		for(size_t i = 0; i < sellOrders.length && order.price >= sellOrders[i].price; )
 		{
 			// lookup the serller
-			Account seller = findUser(sellOrder[i].accountId);
+			Account seller = findUser(sellOrders[i].account);
 
 			// perform the transaction
-			if(!performTransaction(market, OrderType.buy, account, seller, order, sellOrder[i]))
+			if(!performTransaction(market, OrderType.buy, account, seller, order, sellOrders[i]))
 				break;
 
-			if(sellOrder[i].amount <= 0)
+			if(sellOrders[i].amount <= 0)
 			{
 				// the order was filled, remove from the market
 				markets[market].sellOrders = markets[market].sellOrders[0 .. i] ~ markets[market].sellOrders[i+1 .. $];
@@ -144,18 +174,23 @@ class Exchange
 		if(order.amount > 0)
 		{
 			Order[] buyOrders = markets[market].buyOrders;
-			for(size_t i = 0; i < buyOrders.length; ++i)
+			size_t i = 0;
+			for(; i < buyOrders.length; ++i)
 			{
-				if(buyOrders[i].perUnit < order.perUnit)
+				if(buyOrders[i].price < order.price)
 				{
 					markets[market].buyOrders = buyOrders[0 .. i] ~ order ~ buyOrders[i .. $];
 					break;
 				}
 			}
+			if(i == buyOrders.length)
+				markets[market].buyOrders ~= order;
 		}
+
+		return true;
 	}
 
-	bool placeSellOrder(Account account, Market market, uint amount, uint perUnit)
+	bool placeSellOrder(Account account, Market market, double amount, double perUnit, bool bMarketPrice)
 	{
 		if(amount == 0.0 || perUnit == 0.0)
 			return false;
@@ -165,10 +200,10 @@ class Exchange
 		Order[] buyOrders = markets[market].buyOrders;
 
 		// if this offer fills any orders
-		for(size_t i = 0; i < buyOrders.length && order.perUnit <= buyOrders[i].perUnit; )
+		for(size_t i = 0; i < buyOrders.length && order.price <= buyOrders[i].price; )
 		{
 			// lookup the buyer
-			Account buyer = findUser(buyOrders[i].accountId);
+			Account buyer = findUser(buyOrders[i].account);
 
 			// perform the transaction
 			if(!performTransaction(market, OrderType.sell, buyer, account, buyOrders[i], order))
@@ -188,20 +223,26 @@ class Exchange
 		if(order.amount > 0)
 		{
 			Order[] sellOrders = markets[market].buyOrders;
-			for(size_t i = 0; i < sellOrders.length; ++i)
+			size_t i = 0;
+			for(; i < sellOrders.length; ++i)
 			{
-				if(sellOrders[i].perUnit > order.perUnit)
+				if(sellOrders[i].price > order.price)
 				{
 					markets[market].sellOrders = sellOrders[0 .. i] ~ order ~ sellOrders[i .. $];
 					break;
 				}
 			}
+			if(i == sellOrders.length)
+				markets[market].sellOrders ~= order;
 		}
+
+		return true;
 	}
 
-	bool deleteOrder(Account account, OrderType type, uint amount, uint perUnit)
+	bool deleteOrder(Account account, OrderType type, double amount, double perUnit)
 	{
-		findOrder(user, type, amount, perUnit);
+//		findOrder(account, type, amount, perUnit);
+		return false;
 	}
 
 	OrderBook orderBook(Market market) pure nothrow
@@ -210,37 +251,37 @@ class Exchange
 	}
 
 private:
-	bool performTransaction(Market market, OrderType type, Account buyer, Account Seller, ref Order buy, ref Order sell)
+	bool performTransaction(Market market, OrderType type, Account buyer, Account seller, ref Order buy, ref Order sell)
 	{
-		// amount buyer is to pay for the complete order
-		double orderTotal = buy.amount * sell.perUnit;
+		// the base transaction
+		double amount = min(buy.amount, sell.amount);
+		double price = sell.price;
+		double total = amount*price;
 
-		// maximum amount buyer can pay
-		double canPay = min(orderTotal, buyer.accounts[market.sellCurrency]);
+		// total amount that buyer can buy
+		double buyerCanPay = min(total, buyer.accounts(market.sellCurrency));
 
 		// if the buyer can't actually pay anything, then we can bail out
-		if(canPay == 0)
+		if(buyerCanPay == 0)
 			return false;
 
-		// amount buyer can buy with available funds
-		double canBuy = buy.amount * (canPay/orderTotal);
+		// amount each party has available
+		double canBuy = amount * (buyerCanPay/total);
+		double canSell = seller.accounts(market.buyCurrency);
 
-		// final amount to buy
-		double toBuy = min(canBuy, seller.accounts[market.buyCurrency]);
-		// final amount to pay
-		double toPay = toBuy * sell.perUnit;
+		// total amount for the order
+		double toBuy = min(canBuy, canSell);
+		double toPay = toBuy * price;
 
 		if(toBuy > 0)
 		{
 			// ****** SENSITIVE ******
 			// this needs to be atomic
-			immutable transaction = Transaction(buyer, seller, type, toBuy, sell.perUnit);
+			immutable transaction = Transaction(buyer, seller, type, toBuy, sell.price);
 			markets[market].filledOrders ~= transaction;
 
-			buyer.accounts[market.buyCurrency] += toBuy;
-			seller.accounts[market.buyCurrency] -= toBuy;
-			buyer.accounts[market.sellCurrency] -= toPay;
-			seller.accounts[market.sellCurrency] += toPay;
+			buyer.trade(market.buyCurrency, toBuy, market.sellCurrency, toPay);
+			seller.trade(market.sellCurrency, toPay, market.buyCurrency, toBuy);
 
 			buy.amount -= toBuy;
 			sell.amount -= toBuy;
@@ -250,5 +291,7 @@ private:
 		return true;
 	}
 
-	OrderBook[Currency.NumMarkets] markets;
+	OrderBook[NumMarkets] markets;
 }
+
+__gshared Exchange exchange;

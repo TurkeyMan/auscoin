@@ -1,0 +1,121 @@
+html,
+body {
+   margin:0;
+   padding:0;
+   height:100%;
+}
+
+.container
+{
+    width: 950px;
+    padding:0px;
+    margin: 0px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#container
+{
+    min-height: 100%;
+    position: relative;
+}
+
+#header
+{
+    padding-top: 5px;
+    margin-bottom: 50px;
+}
+
+#body
+{
+    min-height: 100%;
+    padding-bottom: 60px;
+}
+
+#footer
+{
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-color: Silver;
+    padding-top: 10px;
+}
+
+#logo
+{
+    float: left;
+}
+
+#navarea
+{
+}
+
+#navi-left
+{
+    float: left;
+}
+#navi-right
+{
+    float: right;
+}
+
+#quick-login
+{
+    float: left;
+}
+#register
+{
+    float: right;
+}
+
+#content
+{
+    margin: 0px;
+}
+
+#login
+{
+    width: 50%;
+}
+
+#menu
+{
+    float: left;
+    width: 20%;
+    margin-right: 20px;
+}
+
+#account-content
+{
+    width: 75%;
+    float: right;
+}
+
+#balances
+{
+    width: 35%;
+}
+
+#buyorder
+{
+    margin-left: 15%;
+    margin-right: 5%;
+}
+
+#sellorder
+{
+    margin-left: 5%;
+    margin-right: 15%;
+}
+
+#myorders
+{
+}
+
+#market-content
+{
+    width: 75%;
+    float: right;
+}

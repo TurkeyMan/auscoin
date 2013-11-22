@@ -5,7 +5,10 @@ import vibe.data.json;
 import vibe.utils.validation;
 
 import std.traits;
+import std.algorithm;
 
+import auscoin.currency;
+import auscoin.orderbook;
 import auscoin.account;
 import auscoin.helper;
 
@@ -13,348 +16,274 @@ Timer timer;
 
 struct CreateAccount
 {
-    string user;
-    string pass;
-    string verify;
-    @optional string email;
+	string user;
+	string pass;
+	string verify;
+	string email;
 }
 
 struct LoginPass
 {
-    string user;
-    string pass;
+	string user;
+	string pass;
 }
-
-struct SessionID
-{
-    uint user;
-    string key;
-}
-
-struct GetUser
-{
-    string user;
-}
-
-struct GetMap
-{
-    string map;
-}
-
-struct FriendRequest
-{
-    string friend;
-}
-
-struct UserID
-{
-    uint friend;
-}
-
-struct CreateGame
-{
-    string map;
-    int numplayers;
-}
-
-struct GameID
-{
-    uint game;
-}
-
-struct PlayerConfig
-{
-    int race;
-    int colour;
-    int hero;
-    bool ready;
-}
-
-struct GetGame
-{
-    @optional int start = 0;
-    @optional int end = -1;
-    @optional bool onlyactions;
-}
-
-struct Actions
-{
-    string actions;
-}
-
-struct Dump
-{
-    string password;
-}
-
 
 Json JsonSuccess()
 {
-    Json j = Json.EmptyObject;
-    j.status = "success";
-    return j;
+	Json j = Json.emptyObject;
+	j.status = "success";
+	return j;
 }
 
 // cron jobs
 void cron()
 {
-    int x = 0;
-    // logout inactive users
+	SysTime now = Clock.currTime;
+
+	// logout inactive users
+	foreach(k, acc; accountBySession)
+	{
+/*
+		if(now - acc.lastSeen > dur!"minutes"(5))
+		{
+			// logout user...
+			accountBySession[k] = null;
+		}
+*/
+	}
 }
 
-// http handlers
-void apiHandler(alias handler)(HTTPServerRequest req, HTTPServerResponse res) if(is(typeof(handler) == function) && is(ParameterTypeTuple!handler[0] == HTTPServerResponse))
+auto createSession(HTTPServerResponse res, Account user, string password)
 {
-    try
-    {
-        ParameterTypeTuple!handler[1..$] args;
-        foreach(ref a; args)
-            a.loadFrom(req.params, req.form, req.query);
-        handler(res, args);
-    }
-    catch(AusCoinException e)
-        error(res, e.error);
+	string sessionKey = std.digest.digest.toHexString(std.digest.sha.sha1Of(password ~ to!string(user.lastSeen))).idup;
+
+	auto session = res.startSession();
+	session["sessionKey"] = sessionKey;
+	accountBySession[sessionKey] = user;
+
+	return session;
 }
 
-void error(HTTPServerResponse res, string type = null)
+Account activeUser(HTTPServerRequest req)
 {
-    Json j = Json.EmptyObject;
-    j.status = "error";
-    if(type)
-        j.error = type;
-    res.writeBody(j.toPrettyString(), "text/plain");
+	Account user = null;
+	if(req.session !is null && req.session.isKeySet("sessionKey") && req.session["sessionKey"] in accountBySession)
+		user = accountBySession[req.session["sessionKey"]];
+	return user;
 }
-
 
 // api handlers
-void getUser(HTTPServerResponse res, GetUser get)
+
+void configureParams(HTTPServerRequest req, HTTPServerResponse res)
 {
-    User u = getUserByName(get.user);
-
-    Json j = JsonSuccess;
-    j.user = u.toJson();
-
-	res.writeBody(j.toPrettyString(), "text/plain");
+//	req.params["path"] = req.path;
 }
 
-void getMap(HTTPServerResponse res, GetMap get)
+void login(HTTPServerRequest req, HTTPServerResponse res)
 {
-    //...
+	if("email" in req.form && req.form["email"] in accountsByEmail && "password" in req.form)
+	{
+		string email = req.form["email"];
+		string password = req.form["password"];
 
-	res.writeBody("map...", "text/plain");
+		Account user = accountsByEmail[email];
+
+		if(user.validatePassword(password))
+		{
+			debug
+				std.stdio.writeln("Login: #", user.accountId, " - ", user.name);
+
+			user.lastSeen = Clock.currTime;
+			auto session = createSession(res, user, password);
+			res.redirect("/account");
+			return;
+		}
+	}
+
+	Account user = null;
+	res.render!("login.dt", req, user);
 }
 
-void createAccount(HTTPServerResponse res, CreateAccount acc)
+void logout(HTTPServerRequest req, HTTPServerResponse res)
 {
-    try
-        validateUserName(acc.user, 1, 64, "_()[]!$%^=+-", false);
-    catch
-        throw new AusCoinException("invalid username");
-    try
-        validatePassword(acc.pass, acc.verify, 6);
-    catch
-        throw new AusCoinException("invalid password");
+	debug
+	{
+		Account user = activeUser(req);
+		std.stdio.writeln("Logout: ", user.name);
+	}
 
-    User u = createUser(acc.user, acc.pass, acc.email);
-    u.newSession();
-
-    Json j = JsonSuccess;
-    j.user = u.toJson(true);
-
-	res.writeBody(j.toPrettyString(), "text/plain");
+	res.terminateSession();
+	res.redirect("/");
 }
 
-void login(HTTPServerResponse res, LoginPass lp)
+void register(HTTPServerRequest req, HTTPServerResponse res)
 {
-    User u = authenticate(lp.user, lp.pass);
-    u.newSession();
+	if("email" in req.form
+		&& "password" in req.form
+		&& "confirm" in req.form
+		&& "firstname" in req.form
+		&& "lastname" in req.form
+		&& req.form["email"] !in accountsByEmail
+		&& req.form["password"] == req.form["confirm"])
+	{
+		string email = req.form["email"];
+		string password = req.form["password"];
+		string first = req.form["firstname"];
+		string last = req.form["lastname"];
 
-    Json j = JsonSuccess;
-    j.user = u.toJson(true);
+		Account user = Account.create(email, password, first, last);
 
-	res.writeBody(j.toPrettyString(), "text/plain");
+		debug
+			std.stdio.writeln("Create Account: #", user.accountId, " - ", user.name);
+
+		// TODO: email confirmation, but just login for now...
+		auto session = createSession(res, user, password);
+		res.redirect("/account");
+		return;
+	}
+
+	Account user = null;
+	res.render!("register.dt", req, user);
 }
 
-Account loggedInUser(ref SessionID session)
+void checkLogin(HTTPServerRequest req, HTTPServerResponse res)
 {
-    Account u = findUser(session.user);
-    wlAssert(icmp(u.sessionKey, session.key) == 0, "not logged in");
-    u.lastSeen = Clock.currTime();
-    return u;
+	// redirect to /login for unauthenticated users
+	if(req.session is null)
+	{
+		res.redirect("/login");
+	}
+	else if(!req.session.isKeySet("sessionKey") || req.session["sessionKey"] !in accountBySession)
+	{
+		// the session is invalid, or has timed out
+		res.terminateSession();
+		res.redirect("/login");
+	}
 }
 
-void logout(HTTPServerResponse res, SessionID session)
+void deposit(HTTPServerRequest req, HTTPServerResponse res)
 {
-    User u = loggedInUser(session);
+	Currency c = Currency.Unknown;
+	double amount;
 
-    u.sessionKey = null;
+	if("BTC" in req.form)
+	{
+		c = Currency.XBT;
+		amount = to!double(req.form["BTC"]);
+	}
+	else if("AUD" in req.form)
+	{
+		c = Currency.AUD;
+		amount = to!double(req.form["AUD"]);
+	}
 
-    Json j = JsonSuccess;
+	if(c != Currency.Unknown)
+	{
+		Account user = activeUser(req);
+		user.deposit(c, amount);
 
-	res.writeBody(j.toPrettyString(), "text/plain");
+		debug
+			std.stdio.writeln(user.name, " -> Deposit: ", formatCurrency(c, amount));
+
+		res.redirect("/account/summary");
+		return;
+	}
+
+	loggedInTemplate!"deposit.dt"()(req, res);
 }
 
-void requestFriend(HTTPServerResponse res, SessionID session, FriendRequest fr)
+void trade(HTTPServerRequest req, HTTPServerResponse res)
 {
-    User u = loggedInUser(session);
-    User f = getUserByName(fr.friend);
+	Account user = activeUser(req);
+	Market market = Market(CurrencyPair(Currency.XBT, Currency.AUD));
 
-    f.friendRequest(u);
+	if("buyamount" in req.form && "buyprice" in req.form)
+	{
+		double amount = to!double(req.form["buyamount"]);
+		double price = to!double(req.form["buyprice"]);
 
-    Json j = JsonSuccess;
+		exchange.placeBuyOrder(user, market, amount, price, false);
 
-	res.writeBody(j.toPrettyString(), "text/plain");
+		debug
+			std.stdio.writeln(user.name, " -> Buy: ", formatCurrency(Currency.XBT, amount), " for: ", formatCurrency(Currency.AUD, price), "/ea (", formatCurrency(Currency.AUD, amount*price), ")");
+	}
+	else if("sellamount" in req.form && "sellprice" in req.form)
+	{
+		double amount = to!double(req.form["sellamount"]);
+		double price = to!double(req.form["sellprice"]);
+
+		exchange.placeSellOrder(user, market, amount, price, false);
+
+		debug
+			std.stdio.writeln(user.name, " -> Sell: ", formatCurrency(Currency.XBT, amount), " for: ", formatCurrency(Currency.AUD, price), "/ea (", formatCurrency(Currency.AUD, amount*price), ")");
+	}
+
+	res.render!("trade.dt", req, user);
 }
 
-void acceptFriend(HTTPServerResponse res, SessionID session, UserID fr)
+@property HTTPServerRequestDelegate loggedInTemplate(string template_file)()
 {
-    User u = loggedInUser(session);
-    User f = getUserById(fr.friend);
+	return (HTTPServerRequest req, HTTPServerResponse res)
+	{
+		Account user = activeUser(req);
 
-    u.acceptFriend(f);
+		debug
+			std.stdio.writeln(user ? user.name : "Unauthenticated", " -> ", req.path);
 
-    Json j = JsonSuccess;
-    j.friend = f.toJson();
-
-	res.writeBody(j.toPrettyString(), "text/plain");
+		res.render!(template_file, req, user);
+	};
 }
 
-void createLobby(HTTPServerResponse res, SessionID session, CreateGame create)
+void errorPage(HTTPServerRequest req, HTTPServerResponse res, HTTPServerErrorInfo error)
 {
-    User u = loggedInUser(session);
+	Account user = activeUser(req);
 
-    Lobby l = Lobby.create(create.map, create.numplayers, u);
+	debug
+		std.stdio.writeln(user ? user.name : "Unauthenticated", ": Error ", error.code, " - ", error.message);
 
-    Json j = JsonSuccess;
-    j.lobby = l.toJson();
-
-	res.writeBody(j.toPrettyString(), "text/plain");
-}
-
-void joinGame(HTTPServerResponse res, SessionID session, GameID game)
-{
-    User u = loggedInUser(session);
-    Lobby l = getLobby(game.game);
-
-    l.addPlayer(u);
-
-    Json j = JsonSuccess;
-    j.lobby = l.toJson();
-
-	res.writeBody(j.toPrettyString(), "text/plain");
-}
-
-void leaveGame(HTTPServerResponse res, SessionID session, GameID game)
-{
-    User u = loggedInUser(session);
-    Lobby l = getLobby(game.game);
-
-    l.removePlayer(u);
-
-    Json j = JsonSuccess;
-
-	res.writeBody(j.toPrettyString(), "text/plain");
-}
-
-void configureGame(HTTPServerResponse res, SessionID session, GameID game, PlayerConfig config)
-{
-    User u = loggedInUser(session);
-    Lobby l = getLobby(game.game);
-
-    Game g = l.configPlayer(u, config.race, config.colour, config.hero, config.ready);
-
-    Json j = JsonSuccess;
-    if(g)
-        j.game = g.toJson();
-    else
-        j.lobby = l.toJson();
-
-	res.writeBody(j.toPrettyString(), "text/plain");
-}
-
-void invite(HTTPServerResponse res, SessionID session, GameID game, UserID invite)
-{
-    User u = loggedInUser(session);
-    Lobby l = getLobby(game.game);
-    User f = getUserById(invite.friend);
-
-    f.invite(l, u);
-
-    Json j = JsonSuccess;
-
-	res.writeBody(j.toPrettyString(), "text/plain");
-}
-
-void getGame(HTTPServerResponse res, SessionID session, GameID game, GetGame opts)
-{
-    Game g = auscoin.game.getGame(game.game);
-    User u = loggedInUser(session);
-
-    wlAssert(isPlayerInGame(g, u), "not in game");
-
-    Json j = JsonSuccess;
-    j.game = g.toJson(opts.start, opts.end, opts.onlyactions);
-
-	res.writeBody(j.toPrettyString(), "text/plain");
-}
-
-void commit(HTTPServerResponse res, SessionID session, GameID game, Actions commit)
-{
-    User u = loggedInUser(session);
-    Game g = auscoin.game.getGame(game.game);
-
-    wlAssert(isPlayerInGame(g, u), "not in game");
-
-    g.commit(commit.actions);
-
-    Json j = JsonSuccess;
-
-	res.writeBody(j.toPrettyString(), "text/plain");
-}
-
-void dump(HTTPServerResponse res, Dump args)
-{
-    Json j = Json.EmptyObject;
-    if(args.password[] != "terceS")
-    {
-        j.status = "error";
-    }
-    else
-    {
-        j.status = "success";
-        j.users = allUsers();
-        j.lobbies = allLobbies();
-        j.games = allGames();
-    }
-
-	res.writeBody(j.toPrettyString(), "text/plain");
+	res.render!("error.dt", req, user, error);
 }
 
 shared static this()
 {
-    timer = setTimer(dur!"minutes"(1), toDelegate(&cron), true);
+	timer = setTimer(dur!"minutes"(2), toDelegate(&cron), true);
 
 	auto settings = new HTTPServerSettings;
-//    settings.errorPageHandler = toDelegate(&errorPage);
+	settings.errorPageHandler = toDelegate(&errorPage);
 	settings.port = 8888;
-    settings.options = HTTPServerOption.parseURL | HTTPServerOption.parseFormBody | HTTPServerOption.parseQueryString;
+	settings.options = HTTPServerOption.parseURL | HTTPServerOption.parseFormBody | HTTPServerOption.parseQueryString | HTTPServerOption.parseCookies;
+	settings.sessionStore = new MemorySessionStore;
 
-    auto router = new URLRouter;
-    router.any("/api/dump", &apiHandler!dump);
-    router.any("/api/users/:user", &apiHandler!getUser);
-    router.any("/api/maps/:map", &apiHandler!getMap);
-    router.any("/api/createaccount", &apiHandler!createAccount);
-    router.any("/api/login", &apiHandler!login);
-    router.any("/api/logout", &apiHandler!logout);
-    router.any("/api/requestfriend", &apiHandler!requestFriend);
-    router.any("/api/acceptfriend", &apiHandler!acceptFriend);
-    router.any("/api/creategame", &apiHandler!createLobby);
-    router.any("/api/joingame", &apiHandler!joinGame);
-    router.any("/api/leavegame", &apiHandler!leaveGame);
-    router.any("/api/configuregame", &apiHandler!configureGame);
-    router.any("/api/invite", &apiHandler!invite);
-    router.any("/api/games/:game", &apiHandler!getGame);
-    router.any("/api/commit", &apiHandler!commit);
+	auto router = new URLRouter;
+
+	// static files
+	router.get("*", serveStaticFiles("./www/"));
+
+	// setup variables...?
+	router.any("*", &configureParams);
+
+	// public pages
+	router.get("/", loggedInTemplate!"index.dt");
+	router.any("/login", &login);
+	router.get("/logout", &logout);
+	router.any("/register", &register);
+
+	// private pages
+	router.any("*", &checkLogin);
+	router.any("/profile", loggedInTemplate!"profile.dt");
+
+	router.any("/account", staticRedirect("/account/summary"));
+	router.any("/account/summary", loggedInTemplate!"summary.dt");
+	router.any("/account/deposit", &deposit);//loggedInTemplate!"deposit.dt");
+	router.any("/account/withdraw", loggedInTemplate!"withdraw.dt");
+
+	router.any("/trade", &trade);
+
+	router.any("/market", staticRedirect("/market/orders"));
+	router.any("/market/orders", loggedInTemplate!"orders.dt");
+	router.any("/market/trades", loggedInTemplate!"trades.dt");
+	//	router.any("/api/users/:user", &apiHandler!getUser);
 
 	listenHTTP(settings, router);
 }
+ 
